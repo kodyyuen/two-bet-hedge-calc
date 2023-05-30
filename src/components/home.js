@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { Container, InputGroup, Form, Button } from "react-bootstrap";
+import { Container, Button } from "react-bootstrap";
 import CalculatedResults from "./calculated-results";
 import InputField from "./input-field";
 
