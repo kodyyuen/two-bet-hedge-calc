@@ -57,69 +57,32 @@ const Home = () => {
   };
 
   return (
-    <Container>
-      <p>
-        This calculator is for hedging an initial bet with multiple hedge bets.
-        For example, i
-      </p>
-      {inputFields.map((f) => (
-        <InputField {...f} />
-      ))}
-      {/* <InputGroup className="mb-3">
-        <InputGroup.Text>Bet #1</InputGroup.Text>
-        <Form.Control
-          aria-label="Bet #1 Value"
-          aria-describedby="basic-addon1"
-          ref={betOneValueRef}
-          placeholder="Enter a value"
-        />
-      </InputGroup>
-      <InputGroup className="mb-3">
-        <InputGroup.Text id="basic-addon2">Bet Line #1</InputGroup.Text>
-        <Form.Control
-          aria-label="Bet #1 Line"
-          aria-describedby="basic-addon2"
-          ref={betOneLineRef}
-          placeholder="Enter odds"
-        />
-      </InputGroup>
-      <InputGroup className="mb-3">
-        <InputGroup.Text id="basic-addon3">Hedge #1</InputGroup.Text>
-        <Form.Control
-          aria-label="Hedge #1 Value"
-          aria-describedby="basic-addon3"
-          ref={hedgeOneValueRef}
-          placeholder="Enter a value"
-        />
-      </InputGroup>
-      <InputGroup className="mb-3">
-        <InputGroup.Text id="basic-addon4">Hedge Line #1</InputGroup.Text>
-        <Form.Control
-          aria-label="Hedge #1 Line"
-          aria-describedby="basic-addon4"
-          ref={hedgeOneLineRef}
-          placeholder="Enter odds"
-        />
-      </InputGroup>
-      <InputGroup className="mb-3">
-        <InputGroup.Text id="basic-addon5">Hedge Line #2</InputGroup.Text>
-        <Form.Control
-          aria-label="Hedge #2 Line"
-          aria-describedby="basic-addon5"
-          ref={hedgeTwoLineRef}
-          placeholder="Enter odds"
-        />
-      </InputGroup> */}
-      <Button onClick={() => renderResults()}>Calculate</Button>
-      {calculated && (
-        <CalculatedResults
-          betOneValue={parseInput(betOneValueRef)}
-          betOneLine={parseInput(betOneLineRef)}
-          hedgeOneValue={parseInput(hedgeOneValueRef)}
-          hedgeOneLine={parseInput(hedgeOneLineRef)}
-          hedgeTwoLine={parseInput(hedgeTwoLineRef)}
-        />
-      )}
+    <Container
+      fluid
+      className="d-flex justify-content-center align-items-center m-4"
+    >
+      <Container className="m-3 p-3 text-center">
+        <h1>Two Bet Hedge Calculator</h1>
+        <p className="mt-3 text-start">
+          This calculator is for hedging an initial bet with multiple hedge
+          bets. For example, if you place a bet of $50 with +500, a hedge 1 of $60 with -300, and hedge 2 has -400, then you will need to place a $176 hedge bet to guarantee $14.
+        </p>
+        <Container className="m-3 p-3">
+          {inputFields.map((f) => (
+            <InputField {...f} />
+          ))}
+        </Container>
+        <Button onClick={() => renderResults()}>Calculate</Button>
+        {calculated && (
+          <CalculatedResults
+            betOneValue={parseInput(betOneValueRef)}
+            betOneLine={parseInput(betOneLineRef)}
+            hedgeOneValue={parseInput(hedgeOneValueRef)}
+            hedgeOneLine={parseInput(hedgeOneLineRef)}
+            hedgeTwoLine={parseInput(hedgeTwoLineRef)}
+          />
+        )}
+      </Container>
     </Container>
   );
 };

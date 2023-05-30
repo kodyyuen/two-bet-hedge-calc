@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Container } from "react-bootstrap";
 
 const CalculatedResults = ({
   betOneValue,
@@ -43,19 +44,23 @@ const CalculatedResults = ({
   });
 
   return (
-    <p>
-      With your bet 1 of ${betOneValue.toFixed(2)} with{" "}
-      {appendOddsSign(betOneLine)}, hedge 1 of ${hedgeOneValue.toFixed(2)} with{" "}
-      {appendOddsSign(hedgeOneLine)}, and hedge 2 with{" "}
-      {appendOddsSign(hedgeTwoLine)}, you will need to bet $
-      {hedgeTwoValue.toFixed(2)}.<br />
-      If you win bet 1, you will profit ${betOneWinnings.toFixed(2)} - $
-      {hedgeOneValue.toFixed(2)} - ${hedgeTwoValue.toFixed(2)} = $
-      {(betOneWinnings - hedgeOneValue - hedgeTwoValue).toFixed(2)}.<br />
-      If you win the hedge bet, you will profit ${hedgeOneWinnings.toFixed(2)} +
-      ${hedgeTwoWinnings.toFixed(2)} - ${betOneValue.toFixed(2)} = $
-      {(hedgeOneWinnings + hedgeTwoWinnings - betOneValue).toFixed(2)}.
-    </p>
+    <Container className="mt-5 p-0">
+      <p className="fs-5">
+        With your bet 1 of ${betOneValue.toFixed(2)} with{" "}
+        {appendOddsSign(betOneLine)}, hedge 1 of ${hedgeOneValue.toFixed(2)}{" "}
+        with {appendOddsSign(hedgeOneLine)}, and hedge 2 with{" "}
+        {appendOddsSign(hedgeTwoLine)}, you will need to bet $
+        {hedgeTwoValue.toFixed(2)}.<br />
+        If you win bet 1, you will profit ${betOneWinnings.toFixed(2)} - $
+        {hedgeOneValue.toFixed(2)} - ${hedgeTwoValue.toFixed(2)} = $
+        {(betOneWinnings - hedgeOneValue - hedgeTwoValue).toFixed(2)}.<br />
+        If you win the hedge bet, you will profit ${hedgeOneWinnings.toFixed(
+          2
+        )}{" "}
+        + ${hedgeTwoWinnings.toFixed(2)} - ${betOneValue.toFixed(2)} = $
+        {(hedgeOneWinnings + hedgeTwoWinnings - betOneValue).toFixed(2)}.
+      </p>
+    </Container>
   );
 };
 
