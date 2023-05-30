@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const CalculatedResults = ({
   betOneValue,
@@ -11,14 +11,13 @@ const CalculatedResults = ({
   const [hedgeOneWinnings, setHedgeOneWinnings] = useState(0);
   const [hedgeTwoWinnings, setHedgeTwoWinnings] = useState(0);
   const [hedgeTwoValue, setHedgeTwoValue] = useState(0);
-  const b1v = betOneValue;
 
   const appendOddsSign = (odds) => {
-    return odds > 0 ? `+${odds}` : odds;
+    return odds >= 0 ? `+${odds}` : odds;
   };
 
   const americanToDecimal = (odds) => {
-    return odds > 0 ? odds / 100 + 1 : 1 - 100 / odds;
+    return odds >= 0 ? odds / 100 + 1 : 1 - 100 / odds;
   };
 
   const calculateWinnings = (value, odds) => {
@@ -39,9 +38,13 @@ const CalculatedResults = ({
     setHedgeTwoWinnings(hedgeTwoWin);
   };
 
+  useEffect(() => {
+    calculateValues();
+  });
+
   return (
     <p>
-      With your bet 1 of ${b1v.toFixed(2)} with{" "}
+      With your bet 1 of ${betOneValue.toFixed(2)} with{" "}
       {appendOddsSign(betOneLine)}, hedge 1 of ${hedgeOneValue.toFixed(2)} with{" "}
       {appendOddsSign(hedgeOneLine)}, and hedge 2 with{" "}
       {appendOddsSign(hedgeTwoLine)}, you will need to bet $
